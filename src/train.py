@@ -46,6 +46,17 @@ def main(args):
 
     print(f"VAL_F1={f1:.4f} VAL_ROC_AUC={roc:.4f}")
 
+    # log experiment
+    with open("experiments.log", "a") as f:
+        f.write(
+            f"n_estimators={args.n_estimators}, "
+            f"max_depth={args.max_depth}, "
+            f"seed={args.seed}, "
+            f"F1={f1:.4f}, "
+            f"ROC_AUC={roc:.4f}\n"
+        )
+
+    # save 
     joblib.dump(model, "model.joblib")
     print("Model saved to model.joblib")
 
