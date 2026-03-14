@@ -42,6 +42,8 @@ Validation metrics:
 F1 Score: ~0.60  
 ROC-AUC: ~0.83
 
+Confusion matrix shows the model misses some churn cases due to class imbalance. This was partially mitigated using class_weight="balanced".
+
 ## Technologies
 
 - Python
@@ -49,3 +51,55 @@ ROC-AUC: ~0.83
 - pandas
 - numpy
 - matplotlib## Experiment Results 
+
+## Project Structure
+
+churn-prediction/
+│
+├── data/                  # Telco churn dataset
+├── notebooks/             # Exploratory data analysis
+│   └── analysis.ipynb
+│
+├── src/                   # ML pipeline
+│   ├── preprocess.py
+│   ├── train.py
+│   └── evaluate.py
+│
+├── experiments.log        # experiment tracking
+├── model.joblib           # trained model
+├── requirements.txt
+└── README.md
+
+## How to Run
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Train the model:
+
+python src/train.py
+
+Evaluate the model:
+
+python src/evaluate.py
+
+## Mathematical Objective
+
+The Random Forest classifier builds decision trees by minimizing **Gini impurity** at each split.
+
+Gini impurity is defined as:
+
+G = 1 − Σ (p_i)^2
+
+Where:
+
+- p_i is the probability of class i at a node.
+
+The model selects splits that minimize impurity, resulting in more homogeneous nodes.
+
+To address class imbalance in the churn dataset, the model was trained with:
+
+class_weight="balanced"
+
+which increases the penalty for misclassifying churn cases.
