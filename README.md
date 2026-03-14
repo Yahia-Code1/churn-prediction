@@ -52,37 +52,15 @@ Confusion matrix shows the model misses some churn cases due to class imbalance.
 - numpy
 - matplotlib## Experiment Results 
 
-## Project Structure
-
-churn-prediction/
-│
-├── data/                  # Telco churn dataset
-├── notebooks/             # Exploratory data analysis
-│   └── analysis.ipynb
-│
-├── src/                   # ML pipeline
-│   ├── preprocess.py
-│   ├── train.py
-│   └── evaluate.py
-│
-├── experiments.log        # experiment tracking
-├── model.joblib           # trained model
-├── requirements.txt
-└── README.md
-
 ## How to Run
 
 Install dependencies:
 
 pip install -r requirements.txt
 
-Train the model:
+Train the model: python src/train.py
 
-python src/train.py
-
-Evaluate the model:
-
-python src/evaluate.py
+Evaluate the model: python src/evaluate.py
 
 ## Mathematical Objective
 
